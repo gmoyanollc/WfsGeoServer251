@@ -1,0 +1,55 @@
+echo "** gBEGIN **"
+echo "executing pre_restart_jbossews..."
+# dataset identifier enumeration for user shell environment
+#gGEOSERVER_DATA="data"
+#gGEOSERVER_DATA="data_tgis"
+gGEOSERVER_DATA="data_tutorial_appschema"
+
+echo "original environment variable settings:"
+
+echo "_JAVA_OPTS=$_JAVA_OPTS"
+echo "CATALINA_OPTS=$CATALINA_OPTS"
+echo "GEOSERVER_DATA_DIR=$GEOSERVER_DATA_DIR"
+echo "JAVA_OPTS=$JAVA_OPTS"
+echo "JVM_OPTS=$JVM_OPTS"
+echo "user_vars.gGEOSERVER_DATA=$gGEOSERVER_DATA"
+echo "user_vars.gGEOSERVER_DATA_DIR=$gGEOSERVER_DATA_DIR"
+
+# Geoserver recommendation for JVM, however only Catalina options that allow start
+#export CATALINA_OPTS="$CATALINA_OPTS -server -Xmx256M -Xms48m -XX:SoftRefLRUPolicyMSPerMB=36000 -XX:MaxPermSize=128m -XX:+UseParallelGC -DGEOSERVER_DATA_DIR=${OPENSHIFT_DATA_DIR}geoserver_data"
+#export CATALINA_OPTS="$CATALINA_OPTS -server -Xmx256M  -Xms48m -XX:MaxPermSize=128m -DGEOSERVER_DATA_DIR=${OPENSHIFT_DATA_DIR}geoserver_data"
+export CATALINA_OPTS="$CATALINA_OPTS -server -Xmx256M  -Xms48m -XX:MaxPermSize=128m"
+# dataset identifier for user shell environment
+echo $gGEOSERVER_DATA > $HOME/.env/user_vars/gGEOSERVER_DATA
+# ?when the webapp files change, manually update the GEOSERVER_DATA_DIR from the webapps folder
+# for Catalina GeoServer environment
+export GEOSERVER_DATA_DIR=${OPENSHIFT_DATA_DIR}geoserver_data/${gGEOSERVER_DATA}
+# duplicate for user shell environment since Catalina environment is not accessible
+echo $GEOSERVER_DATA_DIR > $HOME/.env/user_vars/gGEOSERVER_DATA_DIR
+
+echo "configured settings:"
+
+echo "_JAVA_OPTS=$_JAVA_OPTS"
+echo "CATALINA_OPTS=$CATALINA_OPTS"
+echo "GEOSERVER_DATA_DIR=$GEOSERVER_DATA_DIR"
+echo "JAVA_OPTS=$JAVA_OPTS"
+echo "JVM_OPTS=$JVM_OPTS"
+echo "user_vars.gGEOSERVER_DATA=$gGEOSERVER_DATA"
+echo "user_vars.gGEOSERVER_DATA_DIR=$gGEOSERVER_DATA_DIR"
+
+if [ -f "$OPENSHIFT_REPO_DIR/.openshift/markers/refresh_geoserver_data_dir" ] 
+then
+    if [ ! -d "$GEOSERVER_DATA_DIR" ] 
+    then
+        echo "Adding directory $gGEOSERVER_DATA_DIR"
+        mkdir -v $gGEOSERVER_DATA_DIR
+    fi
+    echo "Copying directory $OPENSHIFT_REPO_DIR/webapps/geoserver251/$gGEOSERVER_DATA/* to $gGEOSERVER_DATA_DIR"
+    cp -r -v $OPENSHIFT_REPO_DIR/webapps/geoserver251/$gGEOSERVER_DATA/* $gGEOSERVER_DATA_DIR
+    echo "Resetting marker file by renaming"
+    echo "  $OPENSHIFT_REPO_DIR/.openshift/markers/refresh_geoserver_data_dir to $OPENSHIFT_REPO_DIR/.openshift/markers/@refresh_geoserver_data_dir"
+    mv -v $OPENSHIFT_REPO_DIR/.openshift/markers/refresh_geoserver_data_dir $OPENSHIFT_REPO_DIR/.openshift/markers/@refresh_geoserver_data_dir
+fi
+
+echo "...done with pre_restart_jbossews"
+echo "** gEND **"

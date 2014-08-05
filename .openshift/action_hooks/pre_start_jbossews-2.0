@@ -1,0 +1,2 @@
+source $OPENSHIFT_REPO_DIR/.openshift/action_hooks/g_init
+
