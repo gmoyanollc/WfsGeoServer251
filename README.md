@@ -25,12 +25,19 @@ After placing the files in the right place, make sure file permissions are set s
 
 Also, ensure the following minimum Java values and session variables are appropriately set to provide the instance the resources it needs to run:
 
-JAVA_OPTS="-server -Xms48M -Xmx256M -XX:MaxPermSize=128M -DGEOSERVER_HOME=/usr/share/tomcat/webapps/wfsgeoserver -DGEOSERVER_DATA_DIR=/usr/share/tomcat/webapps/wfsgeoserver/data_tutorial_appschema"
+  JAVA_OPTS="-server -Xms48M -Xmx256M -XX:MaxPermSize=128M -DGEOSERVER_HOME=/usr/share/tomcat/webapps/wfsgeoserver -DGEOSERVER_DATA_DIR=/usr/share/tomcat/webapps/wfsgeoserver/data_tutorial_appschema"
 
 Run It
 ------
-The respective GeoServer log file is the following:
+Access GeoServer at http://localhost:8080/wfsgeoserver .
 
-/usr/share/tomcat/webapps/geoserver/data_tutorial_appschema/logs/geoserver.log
+Log in to GeoServer as "root".  The password is located in the following file:
+
+  /usr/share/tomcat/webapps/wfsgeoserver/data_tutorial_appschema/security/masterpw.info
+
+GeoServer logging is located in the following file:
+
+  /usr/share/tomcat/webapps/geoserver/data_tutorial_appschema/logs/geoserver.log
+
 
 -g
