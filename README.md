@@ -13,7 +13,7 @@ http://stackoverflow.com/questions/651038/how-do-you-clone-a-git-repository-into
 
 After placing the files in the right place, make sure file permissions are set so that the Tomcat service can appropriately access the files.
 
-Also, ensure the following minimum Java values and session variables are appropriately set to provide the instance the resources to run:
+Also, ensure the following minimum Java values and session variables are appropriately set to provide the instance the resources it needs to run:
 
 JAVA_OPTS="-server -Xms48M -Xmx256M -XX:MaxPermSize=128M -DGEOSERVER_HOME=/usr/share/tomcat/webapps/wfsgeoserver -DGEOSERVER_DATA_DIR=/usr/share/tomcat/webapps/wfsgeoserver/data_tutorial_appschema"
 
