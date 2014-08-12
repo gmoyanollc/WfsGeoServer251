@@ -27,6 +27,8 @@ Also, ensure the following minimum Java values and session variables are appropr
 
 JAVA_OPTS="-server -Xms48M -Xmx256M -XX:MaxPermSize=128M -DGEOSERVER_HOME=/usr/share/tomcat/webapps/wfsgeoserver -DGEOSERVER_DATA_DIR=/usr/share/tomcat/webapps/wfsgeoserver/data_tutorial_appschema"
 
+Run It
+------
 The respective GeoServer log file is the following:
 
 /usr/share/tomcat/webapps/geoserver/data_tutorial_appschema/logs/geoserver.log
