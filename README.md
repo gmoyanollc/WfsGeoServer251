@@ -33,11 +33,11 @@ Access GeoServer at http://localhost:8080/wfsgeoserver .
 
 Log in to GeoServer as "root".  The password is located in the following file:
 
-  /usr/share/tomcat/webapps/wfsgeoserver/data_tutorial_appschema/security/masterpw.info
+  WebAppHome "/wfsgeoserver/data_tutorial_appschema/security/masterpw.info"
 
 GeoServer logging is located in the following file:
 
-  /usr/share/tomcat/webapps/geoserver/data_tutorial_appschema/logs/geoserver.log
+  WebAppHome "/geoserver/data_tutorial_appschema/logs/geoserver.log"
 
 
 -g
