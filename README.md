@@ -6,6 +6,7 @@ This GeoServer 2.5.1 configuration has the GML Application Schema Extension and 
 Try It Live
 -----------
 Try a live OpenShift instance at https://geoserver-gmoyano.rhcloud.com/geoserver251 .  
+(Note: Please allow 1-3 minutes to restart the service.  You're browser may appear to hang while the service is spinning up.)
 
 To find out the WFS capabilities provided by this instance:
 
