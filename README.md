@@ -19,7 +19,7 @@ Clone It!
 ---------
 Clone the repository [ https://github.com/gmoyanollc/WfsGeoServer251 ] for this instance and run it in a traditional machine installation or your own OpenShift environment.
 
-First, download git if you don't already have it.
+First, you need git.  Run a Linux package manager command [ http://git-scm.com/download/linux ] or download an installer [ http://git-scm.com/downloads ]. 
 
 Next, clone the repository 
 
