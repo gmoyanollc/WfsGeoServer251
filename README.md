@@ -11,7 +11,7 @@ Discover the capabilities provided by this WFS instance:
 
     https://geoserver-gmoyano.rhcloud.com/geoserver251/wfs?service=wfs&version=2.0.0&request=GetCapabilities
 
-Request a sample Feature (http://en.wikipedia.org/wiki/Geography_Markup_Language#Features):
+Request a sample Feature [ http://en.wikipedia.org/wiki/Geography_Markup_Language#Features ]:
 
     https://geoserver-gmoyano.rhcloud.com/geoserver251/wfs?service=wfs&&version=2.0.0request=GetFeature&typeName=gsml:MappedFeature
 
@@ -52,5 +52,3 @@ GeoServer logging is located in the following file:
 Finally
 -------
 I hope this helps.  Let me know how it goes.
-//
-
