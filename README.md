@@ -1,26 +1,35 @@
 WfsGeoServer251
 ===============
 
-This GeoServer 2.5.1 configuration has the GML Application Schema Extension and accepts WFS HTTP requests.  It leverages the WFS (http://en.wikipedia.org/wiki/Web_Feature_Service) implemention provided by GeoServer.  Download it and push it to a Red Hat OpenShift TomCat 7 Cartridge! Or, download it for a traditional machine installation.
+This GeoServer 2.5.1 instance is configured with a GML Application Schema extension and accepts WFS HTTP requests.  GeoServer is a reference implementation of the WFS specification [ http://en.wikipedia.org/wiki/Web_Feature_Service ].  
 
-Try It Live
------------
-Try a live OpenShift instance at https://geoserver-gmoyano.rhcloud.com/geoserver251 .  
-(Note: Please allow 1-3 minutes to start the service.  Your browser may appear to hang while the service is spinning up.)
+Try It Live!
+------------
+A live instance is on OpenShift [ https://geoserver-gmoyano.rhcloud.com/geoserver251 ].  (Note: Please allow 1-3 minutes to start the service.  Your browser may appear to hang while the service is spinning up.)
 
-To find out the WFS capabilities provided by this instance:
+Discover the capabilities provided by this WFS instance:
 
-  https://geoserver-gmoyano.rhcloud.com/geoserver251/wfs?request=GetCapabilities&version=1.1.0
+    https://geoserver-gmoyano.rhcloud.com/geoserver251/wfs?service=wfs&version=2.0.0&request=GetCapabilities
 
-To request a sample Feature (http://en.wikipedia.org/wiki/Geography_Markup_Language#Features):
+Request a sample Feature (http://en.wikipedia.org/wiki/Geography_Markup_Language#Features):
 
-  https://geoserver-gmoyano.rhcloud.com/geoserver251/wfs?request=GetFeature&version=1.1.0&typeName=gsml:MappedFeature
+    https://geoserver-gmoyano.rhcloud.com/geoserver251/wfs?service=wfs&&version=2.0.0request=GetFeature&typeName=gsml:MappedFeature
 
-Download It
------------
-The following is a helpful post to reference for placing the git in the right place for a machine installation:
+Clone It!
+---------
+Clone the repository [ https://github.com/gmoyanollc/WfsGeoServer251 ] for this instance and run it in a traditional machine installation or your own OpenShift environment.
+
+First, download git if you don't already have it.
+
+Next, clone the repository 
+
+    git clone https://github.com/gmoyanollc/WfsGeoServer251.git
+
+The following is a helpful reference for placing the git in the right place for a machine installation:
 
   http://stackoverflow.com/questions/651038/how-do-you-clone-a-git-repository-into-a-specific-folder
+
+To run this instance in your own OpenShift environment, perform the git remote add, merge, and push commands [  http://stackoverflow.com/questions/12657168/can-i-use-my-existing-git-repo-with-openshift/12669112#12669112 ].
 
 After placing the files in the right place, make sure file permissions are set so that the Tomcat service can appropriately access the files.
 
@@ -28,9 +37,9 @@ Also, ensure the following minimum Java values and session variables are appropr
 
   JAVA_OPTS="-server -Xms48M -Xmx256M -XX:MaxPermSize=128M -DGEOSERVER_HOME=/usr/share/tomcat/webapps/wfsgeoserver -DGEOSERVER_DATA_DIR=/usr/share/tomcat/webapps/wfsgeoserver/data_tutorial_appschema"
 
-Run It
-------
-Access GeoServer at http://localhost:8080/wfsgeoserver .
+Run It!
+-------
+Access a local GeoServer instance at http://localhost:8080/wfsgeoserver .
 
 Log in to GeoServer as "root".  The password is located in the following file:
 
@@ -40,5 +49,8 @@ GeoServer logging is located in the following file:
 
   WebAppHome "/geoserver/data_tutorial_appschema/logs/geoserver.log"
 
+Finally
+-------
+I hope this helps.  Let me know how it goes.
+//
 
--g
